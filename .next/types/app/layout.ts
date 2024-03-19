@@ -1,4 +1,4 @@
-// File: /opt/yijunx/code/app/layout.tsx
+// File: /opt/yijunx/code/app/layout.jsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
