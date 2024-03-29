@@ -1,4 +1,4 @@
-import Feed from "@components/Feed"
+import Link from "next/link"
 
 function Home() {
   return (
@@ -10,8 +10,6 @@ function Home() {
       </h1>
 
       <p className="desc text-center">This is just to help you communicate, pal</p>
-
-      <Feed></Feed>
     </section>
   )
 }
