@@ -4,7 +4,7 @@
 import Form from '@components/Form'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { postConversation } from '@utils/backend'
+import { postChat } from '@utils/backend'
 import { useSession } from 'next-auth/react'
 
 const CreateConversation = () => {
@@ -18,9 +18,9 @@ const CreateConversation = () => {
     e.preventDefault()
     setSubmitting(true)
     try {
-      const msg = await postConversation(userMessage, session?.id_token)
+      const msg = await postChat(userMessage, session?.id_token)
       if (msg) {
-        router.push(`/conversations?id=${msg.chat_id}`)
+        router.push(`/chats?id=${msg.chat_id}`)
       }
     } catch (error) {
       console.log(error);

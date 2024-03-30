@@ -45,7 +45,7 @@ import { signIn } from 'next-auth/react'
 // }
 
 // http://localhost:8006/multi-agent-chat
-export const getMessagesFromConversation = async ( conversationId, id_token ) => {
+export const getMessagesFromChat = async ( conversationId, id_token ) => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SERVICE_URL}/chats/${conversationId}/messages`, {
             method: "GET",
@@ -74,7 +74,7 @@ export const getMessagesFromConversation = async ( conversationId, id_token ) =>
 }
 
 
-export const postConversation = async ( userMessage, id_token ) => {
+export const postChat = async ( userMessage, id_token ) => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SERVICE_URL}/chats`, {
             method: "POST",
