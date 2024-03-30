@@ -7,7 +7,7 @@ const Conversation = ({ messages }) => {
         {
             messages.map(
                 (item, i) => {
-                    return (<Message content={items.actual_content} key={i}/>)
+                    return (<Message content={item.actual_content} key={i}/>)
                 }
             )
         }

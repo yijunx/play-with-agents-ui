@@ -18,9 +18,9 @@ const CreateConversation = () => {
     e.preventDefault()
     setSubmitting(true)
     try {
-      const conv = await postConversation(userMessage, session?.id_token)
-      if (conv) {
-        router.push(`/conversations?id=${conv.id}`)
+      const msg = await postConversation(userMessage, session?.id_token)
+      if (msg) {
+        router.push(`/conversations?id=${msg.chat_id}`)
       }
     } catch (error) {
       console.log(error);
