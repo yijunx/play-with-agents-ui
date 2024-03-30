@@ -10,6 +10,7 @@ function Home() {
       </h1>
 
       <p className="desc text-center">This is just to help you communicate, pal</p>
+      <Link href="/create-conversation">Start</Link>
     </section>
   )
 }
