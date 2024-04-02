@@ -75,6 +75,7 @@ const ChatPage = () => {
       if (lastMessage !== null) {
         let incomingMsg = null
         // try {
+        // let imcomingMsg = lastMessage.data && JSON.parse(lastMessage.data)
         console.log(lastMessage.data)
         try {
           incomingMsg = JSON.parse(lastMessage.data)
