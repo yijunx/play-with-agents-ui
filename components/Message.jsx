@@ -9,7 +9,7 @@ const Message = ({ msg, userId }) => {
     who = msg.created_by_name
   }
   return (
-    <div>{who}: {msg.actual_content}</div>
+    <div className='border-2 border-gray-400'>{who}: {msg.actual_content}</div>
   )
 }
 
