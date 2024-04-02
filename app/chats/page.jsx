@@ -82,6 +82,7 @@ const ChatPage = () => {
         } catch (error) {
           // just to handle the welcome...
           incomingMsg = lastMessage.data
+          console.log(incomingMsg.message)
         }
         
         // } catch (error) {
