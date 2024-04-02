@@ -7,6 +7,8 @@ import { getMessagesFromChat } from "@utils/backend"
 import Link from 'next/link'
 import Chat from '@components/Chat'
 import useWebSocket from 'react-use-websocket';
+import { postMessageToChat } from '@utils/backend'
+import Form from '@components/Form'
 
 
 const ChatPage = () => {
@@ -17,6 +19,28 @@ const ChatPage = () => {
   const [msgs, setMsgs] = useState([])
   const { sendMessage, lastMessage, readyState } = useWebSocket(`${process.env.NEXT_PUBLIC_WS_URL}?token=${session?.id_token}`)
   const [msgFetched, setMsgFetched] = useState(false)
+
+  // user input form below
+  const [userMessage, setUserMessage] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+
+  const continueConversation = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+    try {
+      let msg = await postMessageToChat(userMessage, session?.id_token, chatId)
+      if (msg) {
+        msg.keep_listening = false
+        // add to messages
+        setMsgs((msgs) => msgs.concat(msg))
+        setUserMessage("")
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   useEffect(() => {
     const fetchMsgs = async () => {
@@ -86,6 +110,7 @@ const ChatPage = () => {
   return (
     <div>
       <Chat messages={msgs} userId={session?.user.id}></Chat>
+      <Form userMessage={userMessage} setUserMessage={setUserMessage} submitting={submitting} handleSubmit={continueConversation}></Form>
     </div>
   )
 }

@@ -105,3 +105,36 @@ export const postChat = async ( userMessage, id_token ) => {
         console.log(error)
     }
 }
+
+
+export const postMessageToChat = async ( userMessage, id_token, chatId ) => {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SERVICE_URL}/chats/${chatId}/messages`, {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${id_token}`,
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                "actual_content": userMessage
+            })
+        })
+
+        if (response.status === 401) {
+            // backend return 401
+            console.log(`idtoken is ${id_token}`)
+            // signIn()
+            return
+        }
+
+        if (!response.ok) {
+            console.log(`cannot get prediction with ${process.env.NEXT_PUBLIC_BACKEND_PREDICT_URI} !`)
+            return
+        } else {
+            const data = await response.json()
+            return data
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

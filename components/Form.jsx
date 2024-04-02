@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 
 const Form = ({
-  audience,
-  setAudience,
+  // audience,
+  // setAudience,
   userMessage,
   setUserMessage,
   submitting,

@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/react'
 
 const CreateConversation = () => {
   const router = useRouter()
-  const [audience, setAudience] = useState(["monk", "professor", "engineer"])
+  // const [audience, setAudience] = useState(["monk", "professor", "engineer"])
   const [userMessage, setUserMessage] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const { data: session } =  useSession()
@@ -34,8 +34,8 @@ const CreateConversation = () => {
         {session?.user ? (
             <div>
                 <Form
-                    audience={audience}
-                    setAudience={setAudience}
+                    // audience={audience}
+                    // setAudience={setAudience}
                     userMessage={userMessage}
                     setUserMessage={setUserMessage}
                     submitting={submitting}
