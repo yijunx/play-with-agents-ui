@@ -105,14 +105,19 @@ const ChatPage = () => {
     }
   }, [lastMessage, status])
 
-  // setup the ws, and add msgs, but we need setContent
-
-
-  // need to add the form in the return
   return (
-    <div>
-      <Chat messages={msgs} userId={session?.user.id}></Chat>
-      <Form userMessage={userMessage} setUserMessage={setUserMessage} submitting={submitting} handleSubmit={continueConversation}></Form>
+    <div className='flex flex-col h-screen'>
+      <div className='grow pb-5'>
+        <Chat messages={msgs} userId={session?.user.id}></Chat>
+      </div>
+      <div className='sticky bottom-0 bg-green-900'>
+        <Form 
+          userMessage={userMessage}
+          setUserMessage={setUserMessage}
+          submitting={submitting}
+          handleSubmit={continueConversation}>
+        </Form>
+      </div>
     </div>
   )
 }
