@@ -107,7 +107,7 @@ const ChatPage = () => {
 
   return (
     <div className='flex flex-col h-screen'>
-      <div className='grow pb-5'>
+      <div className='flex-grow pb-5'>
         <Chat messages={msgs} userId={session?.user.id}></Chat>
       </div>
       <div className='sticky bottom-0 bg-green-900'>
